@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { CountContext } from '../context/CountContext'
 
 export const Home = () => {
-  const { count, setCount } = useContext(CountContext)
+  const { count } = useContext(CountContext)
 
   return (
     <div>
