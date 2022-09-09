@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { ReactNode } from 'react';
 import {
   Box,
@@ -16,9 +16,11 @@ import {
   useDisclosure,
   useColorModeValue,
   Stack,
+  Text,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { Routes, Route, Link as RLink } from 'react-router-dom'
+import { ReduceContext } from '../context/ReduceContext';
 
 const Links = ['Home', 'About'];
 
@@ -39,6 +41,7 @@ const NavLink = ({ children }) => (
 
 export const AppNavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { state, dispatch } = useContext(ReduceContext);
 
   return (
     <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
@@ -62,6 +65,7 @@ export const AppNavBar = () => {
         </HStack>
         <Flex alignItems={'center'}>
           <Menu>
+          <Text mr={'5'}>{state.string}</Text>
             <MenuButton
               as={Button}
               rounded={'full'}
